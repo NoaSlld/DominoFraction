@@ -70,7 +70,6 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     border:0px;
     border-radius: 5%;
     background: no-repeat;
-    background-image: url('pec/padr.png');
     background-size: 100% 100%;
 }
 .piece:hover{
@@ -84,14 +83,12 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
 }
 .joueur{
     top:90%;
-    width:50%;
-    left: 33%;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
     background-color: transparent;
-}.joueur .piece{
-    cursor: pointer;
-    width:9% ;
-    height: 4.5vmax;
 }
+
 .infoBis{
     width:100%;
     height:100%;
@@ -117,14 +114,29 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     width:7.5%;
     left: 90%;
 }
+
 .bot0 .piece{
-    display: block;
+
     transform: rotate(270deg); 
     margin-left: 13%;
     width: 70%;
     height: 5vmax;
+    background-color: black;
+    display: flex;
+    margin-bottom: 5%;
+    justify-content: space-between;
 }
+
+.bot0 .piece .top, .bot0 .piece .middle, .bot0 .piece .bottom,
+.bot1 .piece .top, .bot1 .piece .middle, .bot1 .piece .bottom,
+.bot2 .piece .top, .bot2 .piece .middle, .bot2 .piece .bottom{
+    visibility: hidden;
+}
+
+
+
 .bot1{  
+    display: flex;
     bottom: 88%;
     width:50%;
     left: 33%;   
@@ -133,6 +145,9 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     width:9% ;
     height: 4.9vmax;
     transform: rotate(180deg); 
+
+    background-color: black;
+    margin-left: 1%;
 }
 .bot2{  
     top:19%;
@@ -141,11 +156,14 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
        
 }
 .bot2 .piece{
-    display: block;
+
     margin-left: 13%;
     width: 70%;
     height: 5vmax;    
     transform: rotate(90deg);
+
+    background-color: black;
+    margin-bottom: 5%;
 }
 .passer{
     cursor: pointer;
@@ -179,4 +197,36 @@ footer p{
 footer a{
     text-decoration: none;
     color: rgb(189, 189, 189);
+}
+
+.piece {
+	box-sizing: border-box;
+	width: 80px;
+	height: 160px;
+	border: 1px solid black;
+	background-color: white;
+	font-size: 24px;
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    background-image: none !important;;
+ 
+}
+
+.top, .bottom {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.middle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50%;
+	padding: 0 10px;
 }

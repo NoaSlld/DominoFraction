@@ -1,8 +1,8 @@
-pieces = [];
+let dominos = [];
 joueur = [];
 bot = new Array(4);
 
-let qui = 0, v11 = 6, v22 = 6, qle = 0, qld = 0, led = 43, ldd = 49, tole = 45, told = 55, localdrop = 0, sese = 0;
+let qui = 0, v11 = '', v22 = '', qle = 0, qld = 0, led = 43, ldd = 49, tole = 45, told = 55, localdrop = 0, sese = 0, firstTime = true;
 function charger() {
     bot[0] = [];
     bot[1] = [];
@@ -16,34 +16,76 @@ function charger() {
         return;
     });
     //document.querySelector(".droite").addEventListener("drop",()=>{});
-    Definirpieces();
+    dominos.push({
+        val1: null,
+        val2: (Math.floor(Math.random() * 10 ) + 1) + "/" + (Math.floor(Math.random() * 10 ) + 1) + " * " + (Math.floor(Math.random() * 10 ) + 1)  + "/" + (Math.floor(Math.random() * 10 ) + 1),
+        psi: 0
+      });
+    for (let i = 0 ; i < 27 ; i++){
+      createAndPushOneDomino(); 
+    }
+    
+    let [fraction1, fraction2] = dominos[27].val2.split('*');
+    let [numerator1, denominator1] = fraction1.split('/');
+    let [numerator2, denominator2] = fraction2.split('/');
+    
+    prodNum = numerator1 * numerator2
+    prodDenum = denominator1 * denominator2
+    
+    dominos[0].val1 = reduce(prodNum,prodDenum)[0] + "/" + reduce(prodNum,prodDenum)[1]
+    
+    Distribuerpieces();
+    console.log(dominos);
 }
 document.addEventListener("DOMContentLoaded", charger);
-function Definirpieces() {
-    var r1 = 0, r2 = 0, pr = 0;
-    while (1) {
-        var va1 = String(r1),
-            va2 = String(r2);
-        partie = {
-            piece: 'pec/' + va1 + va2 + '.png',
-            val1: r1,
-            val2: r2,
-            psi: 0
-        }
-        pieces.push(partie);
-        r2++;
-        if (r2 == 7) {
-            pr += 1;
-            r2 = pr;
-            r1 = pr;
 
-        }
-        if ((va1 + va2) === '66') {
-            return Distribuerpieces();
-        }
 
-    }
+var i = 0;
+function reduce(number,denomin){
+    var gcd = function gcd(a,b){
+        return b ? gcd(b, a%b) : a;
+    };
+    gcd = gcd(number,denomin);
+    return [number/gcd, denomin/gcd];
 }
+function createAndPushOneDomino(){
+  firstNum = Math.floor(Math.random() * 10 ) + 1;
+  firstDenum = Math.floor(Math.random() * 10 ) + 1;
+
+  secondNum = Math.floor(Math.random() * 10 ) + 1;
+  secondDenum = Math.floor(Math.random() * 10 ) + 1;
+  
+
+  let [fraction1, fraction2] = dominos[i].val2.split('*');
+  let [numerator1, denominator1] = fraction1.split('/');
+  let [numerator2, denominator2] = fraction2.split('/');
+
+  prodNum = numerator1 * numerator2
+  prodDenum = denominator1 * denominator2
+  
+  domino = {
+    val1: reduce(prodNum,prodDenum)[0] + "/" + reduce(prodNum,prodDenum)[1],
+    val2: firstNum + "/" + firstDenum + " * " + secondNum + "/" + secondDenum,
+    psi: 0
+  }
+
+
+  if(verifIfDominoExist(domino,dominos) == false){
+    dominos.push(domino);
+  }
+  i++;
+}
+
+function verifIfDominoExist(dominoToAdd, dominos){
+  dominos.forEach(domino => {
+    if(domino.val1 === dominoToAdd.val1){
+      return true;
+    }
+  })
+  return false;
+}
+
+
 
 function Distribuerpieces() {
     var pobj = [];
@@ -66,39 +108,56 @@ function Distribuerpieces() {
     while (numdecopy < 28) {
         if (numdecopy < 7) {
             locopy = document.querySelector(".joueur");
-            pieces[pobj[numdecopy]].psi = numdecopy;
-            joueur.push(pieces[pobj[numdecopy]]);
+            dominos[pobj[numdecopy]].psi = numdecopy;
+            joueur.push(dominos[pobj[numdecopy]]);
+            afficherDomino(".joueur",pobj,numdecopy)
         }
         if (numdecopy > 6 && numdecopy <= 13) {
             locopy = document.querySelector(".bot0");
-            pieces[pobj[numdecopy]].psi = numdecopy;
-            bot[0].push(pieces[pobj[numdecopy]]);
+            dominos[pobj[numdecopy]].psi = numdecopy;
+            bot[0].push(dominos[pobj[numdecopy]]);
+            afficherDomino(".bot0",pobj,numdecopy)
         }
         if (numdecopy > 13 && numdecopy <= 20) {
             locopy = document.querySelector(".bot1");
-            pieces[pobj[numdecopy]].psi = numdecopy;
-            bot[1].push(pieces[pobj[numdecopy]]);
+            dominos[pobj[numdecopy]].psi = numdecopy;
+            bot[1].push(dominos[pobj[numdecopy]]);
+            afficherDomino(".bot1",pobj,numdecopy)
         }
         if (numdecopy > 20) {
             locopy = document.querySelector(".bot2");
-            pieces[pobj[numdecopy]].psi = numdecopy;
-            bot[2].push(pieces[pobj[numdecopy]]);
-        }
-        var copy = ori.cloneNode(true);
-        locopy.appendChild(copy);
-        if (numdecopy < 7) {
-            document.querySelectorAll(".piece")[numdecopy].style.backgroundImage = "url('" + pieces[pobj[numdecopy]].piece + "')";
-        } else {
-            document.querySelectorAll(".piece")[numdecopy].style.backgroundImage = "url('pec/padr.png')";
+            dominos[pobj[numdecopy]].psi = numdecopy;
+            bot[2].push(dominos[pobj[numdecopy]]);
+            afficherDomino(".bot2",pobj,numdecopy)
         }
         numdecopy++;
     }
     return QuiJoue();
 }
+
+function afficherDomino(query, pobj, numdecopy) {
+    const dominoesDiv = document.querySelectorAll(`${query}`);
+    const div1 = document.createElement("div");
+    div1.classList.add("piece");
+    const topDiv = document.createElement("div");
+    topDiv.classList.add("top");
+    topDiv.innerText = `${dominos[pobj[numdecopy]].val1}`;
+    const middleDiv = document.createElement("div");
+    middleDiv.classList.add("middle");
+    middleDiv.innerText = ":";
+    const bottomDiv = document.createElement("div");
+    bottomDiv.classList.add("bottom");
+    bottomDiv.innerText = `${dominos[pobj[numdecopy]].val2}`;
+    div1.appendChild(topDiv);
+    div1.appendChild(middleDiv);
+    div1.appendChild(bottomDiv);
+    dominoesDiv[0].appendChild(div1);
+}
+
 function QuiJoue() {
     var al = document.querySelector(".info");
-    for (var i = 0; i < 7; i++) {
-        if ((joueur[i].val1 + joueur[i].val2) == 12) {
+    // for (var i = 0; i < 7; i++) {
+        // if (true) {
             document.querySelector(".infoBis").style.display = "block";
             al.innerHTML = "Commencez <br>par double cliquer ou glisser ";
             al.style.display = "block";
@@ -109,38 +168,41 @@ function QuiJoue() {
                 return jouer();
             }, 2500);
             return;
-        }
-    }
-    for (var q = 0; q < 3; q++) {
-        for (var i = 0; i < 7; i++) {
-            if (bot[q][i].val2 == 6 && bot[q][i].val1 == 6) {
-                var nus = (q == 0) ? "2" : (q == 1) ? "3" : "4";
-                document.querySelector(".infoBis").style.display = "block";
-                al.innerHTML = "Joueur " + nus + " commence";
-                al.style.display = "block";
-                sese = i;
-                qui = q;
-                setTimeout(() => {
-                    al.style.display = "none";
-                    return jouer();
-                }, 2500);
-                return;
-            }
-        }
-    }
+        // }
+    // }
+    // for (var q = 0; q < 3; q++) {
+    //     for (var i = 0; i < 7; i++) {
+    //         if (bot[q][i].val2 == 6 && bot[q][i].val1 == 6) {
+    //             var nus = (q == 0) ? "2" : (q == 1) ? "3" : "4";
+    //             document.querySelector(".infoBis").style.display = "block";
+    //             al.innerHTML = "Joueur " + nus + " commence";
+    //             al.style.display = "block";
+    //             sese = i;
+    //             qui = q;
+    //             setTimeout(() => {
+    //                 al.style.display = "none";
+    //                 return jouer();
+    //             }, 2500);
+    //             return;
+    //         }
+    //     }
+    // }
 }
 function JeuBlock() {
     var n = 0;
     for (var i = 0; i < joueur.length; i++) {
-        if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
+        // Faire les eval des valeurs des pièces les plus à gauche & droite sur le plateau
+        if(eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1) || firstTime) {
+        // if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
             n += 1;
             break;
         }
     }
     for (var q = 0; q < 3; q++) {
         for (var i = 0; i < bot[q].length; i++) {
-            if (v11 == bot[q][i].val1 || v22 == bot[q][i].val2
-                || v11 == bot[q][i].val2 || v22 == bot[q][i].val1) {
+            if(eval(v11) == eval(bot[q][i].val2) || eval(v22) == eval(bot[q][i].val2)) {
+            // if (v11 == bot[q][i].val1 || v22 == bot[q][i].val2
+            //     || v11 == bot[q][i].val2 || v22 == bot[q][i].val1) {
                 n += 1;
                 break;
             }
@@ -148,15 +210,18 @@ function JeuBlock() {
     }
     return n;
 }
+
 function FinDuJeu() {
-    document.querySelector("footer").style.display = "block";
-    document.querySelectorAll("button")[2].style.display = "block";
-    document.querySelectorAll("button")[2].addEventListener("click", () => {
-        setTimeout(() => {
-            return document.location.reload(true);
-        }, 500);
-    });
+    console.log("TODO - JEU FINI");
+    // document.querySelector("footer").style.display = "block";
+    // document.querySelectorAll("button")[2].style.display = "block";
+    // document.querySelectorAll("button")[2].addEventListener("click", () => {
+    //     setTimeout(() => {
+    //         return document.location.reload(true);
+    //     }, 500);
+    // });
 }
+
 function gagner() {
     if (joueur.length == 0) {
         return 3;
@@ -173,9 +238,15 @@ function gagner() {
     return -1;
 
 }
+
 function jouer() {
+    console.log('v11', v11);
+    console.log('v22', v22);
+    console.log('qld', qld);
+    console.log('qle', qle);
+    console.log('------------------------');
     document.querySelector(".infoBis").style.display = "block";
-    document.querySelector(".passer").style.display = "none";
+    document.querySelector(".passer").style.display = "block";
     var al = document.querySelector(".info");
     var gan = gagner();
     if (gan >= 0) {
@@ -192,12 +263,12 @@ function jouer() {
         }
     }
     if (JeuBlock() == 0) {
-        al.innerHTML = "jogo bloqueado";
+        al.innerHTML = "Jeu bloqué";
         al.style.display = "block";
         document.querySelector(".infoBis").style.display = "block";
         return FinDuJeu();
     }
-    if(sese<0){
+    // if(sese<0){
     var nus = (qui == 3) ? "Q?" : (qui == 0) ? "2" : (qui == 1) ? "3" : "4";
     if (nus === "Q?") {
         al.innerHTML = "A toi de jouer <br>glisse ou double clique sur le domino";
@@ -205,7 +276,7 @@ function jouer() {
         al.innerHTML = "Tour du joueur " + nus;
     }
     al.style.display = "block";
-}
+// }
     switch (qui) {
         case 3:
           setTimeout( AddeventJoueur,1000);
@@ -216,49 +287,67 @@ function jouer() {
             break;
     }
 }
+
 function botjeu() {
     document.querySelector(".infoBis").style.display = "block";
     var el = document.querySelectorAll(".bot" + String(qui) + " .piece");
-    if (sese >= 0) {
-        tableau(1, 0, bot[qui][sese].val1, bot[qui][sese].val2, bot[qui][sese].piece);
-        el[sese].remove();
-        bot[qui].splice(sese, 1);
-        sese = -3;
-        qui +=1;
-        return jouer();
-    }
+    // if (sese >= 0) {
+    //     tableau(1, 0, bot[qui][sese].val1, bot[qui][sese].val2, bot[qui][sese].piece);
+    //     el[sese].remove();
+    //     bot[qui].splice(sese, 1);
+    //     sese = -3;
+    //     qui +=1;
+    //     return jouer();
+    // }
+    console.log('0');
     for (var i = 0; i <= bot[qui].length; i++) {
         if (i == bot[qui].length) {
             qui+=1;
             return jouer();
         }
-        if (v11 == bot[qui][i].val1) {
-            v11 = bot[qui][i].val2;
-            tableau(1, 0, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
-            el[i].remove();
-            bot[qui].splice(i, 1);
-            qui +=1;
-            return jouer();
-        }
-        if (v11 == bot[qui][i].val2) {
+        // if (v11 == bot[qui][i].val1) {
+        //     v11 = bot[qui][i].val2;
+        //     tableau(1, 0, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+        //     el[i].remove();
+        //     bot[qui].splice(i, 1);
+        //     qui +=1;
+        //     return jouer();
+        // }
+        // if (v11 == bot[qui][i].val2) {
+        //     v11 = bot[qui][i].val1;
+        //     tableau(1, 1, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+        //     el[i].remove();
+        //     bot[qui].splice(i, 1);
+        //     qui +=1;
+        //     return jouer();
+        // }
+        // if (v22 == bot[qui][i].val2) {
+        //     v22 = bot[qui][i].val1;
+        //     tableau(2, 1, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+        //     el[i].remove();
+        //     bot[qui].splice(i, 1);
+        //     qui +=1;
+        //     return jouer();
+        // }
+        // if (v22 == bot[qui][i].val1) {
+        //     v22 = bot[qui][i].val2;
+        //     tableau(2, 0, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+        //     el[i].remove();
+        //     bot[qui].splice(i, 1);
+        //     qui +=1;
+        //     return jouer();
+        // }
+        if(eval(v11) == eval(bot[qui][i].val2)){
             v11 = bot[qui][i].val1;
-            tableau(1, 1, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+            tableau(1, 0, bot[qui][i].val1, bot[qui][i].val2, '');
             el[i].remove();
             bot[qui].splice(i, 1);
             qui +=1;
             return jouer();
         }
-        if (v22 == bot[qui][i].val2) {
-            v22 = bot[qui][i].val1;
-            tableau(2, 1, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
-            el[i].remove();
-            bot[qui].splice(i, 1);
-            qui +=1;
-            return jouer();
-        }
-        if (v22 == bot[qui][i].val1) {
+        if(eval(v22) == eval(bot[qui][i].val1)){
             v22 = bot[qui][i].val2;
-            tableau(2, 0, bot[qui][i].val1, bot[qui][i].val2, bot[qui][i].piece);
+            tableau(2, 0, bot[qui][i].val1, bot[qui][i].val2, '');
             el[i].remove();
             bot[qui].splice(i, 1);
             qui +=1;
@@ -327,46 +416,66 @@ function AddeventJoueur() {
 function joueurjoue() {
     var el = document.querySelectorAll(".joueur .piece");
     var al = document.querySelector(".info");
-    if (sese >= 0) {
-        if (el[sese].style.border == "0.5px solid black") {
-            tableau(1, 0, joueur[sese].val1, joueur[sese].val2, joueur[sese].piece);
-            qui=0;
-            var aux=sese;
-            sese=-3;
-            return retirer(aux);
-        } else {
-            al.innerHTML = "piece invalide";
-            al.style.display = "block";
-            for (var i = 0; i < el.length; i++) {
-                if (el[i].style.border == "0.5px solid black") {
-                    el[i].style.border = "0px"
-                }
-            }
-            setTimeout(() => { al.style.display = "none" }, 2500);
-        }
-    } else {
+    // if (sese >= 0) {
+    //     if (el[sese].style.border == "0.5px solid black") {
+    //         tableau(1, 0, joueur[sese].val1, joueur[sese].val2, joueur[sese].piece);
+    //         qui=0;
+    //         var aux=sese;
+    //         sese=-3;
+    //         return retirer(aux);
+    //     } else {
+    //         al.innerHTML = "piece invalide";
+    //         al.style.display = "block";
+    //         for (var i = 0; i < el.length; i++) {
+    //             if (el[i].style.border == "0.5px solid black") {
+    //                 el[i].style.border = "0px"
+    //             }
+    //         }
+    //         setTimeout(() => { al.style.display = "none" }, 2500);
+    //     }
+    // } else {
         for (var i = 0; i < el.length; i++) {
             if (el[i].style.border == "0.5px solid black") {
-                if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
-                    if (v11 == joueur[i].val1) {
-                        v11 = joueur[i].val2;
-                        tableau(1, 0, joueur[i].val1, joueur[i].val2, joueur[i].piece);
-                        return retirer(i);
-                    } if (v11 == joueur[i].val2) {
+                // console.log("0");
+                if(firstTime == true || eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1)){
+                    // console.log("1")
+                // if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
+                    // if (v11 == joueur[i].val1) {
+                    //     v11 = joueur[i].val2;
+                    //     tableau(1, 0, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                    //     return retirer(i);
+                    // } if (v11 == joueur[i].val2) {
+                    //     v11 = joueur[i].val1;
+                    //     tableau(1, 1, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                    //     return retirer(i);
+                    // } if (v22 == joueur[i].val1) {
+                    //     v22 = joueur[i].val2;
+                    //     tableau(2, 0, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                    //     return retirer(i);
+                    // } if (v22 == joueur[i].val2) {
+                    //     v22 = joueur[i].val1;
+                    //     tableau(2, 1, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                    //     return retirer(i);
+                    // }
+                    if(firstTime == true){
+                        // console.log("2");
                         v11 = joueur[i].val1;
-                        tableau(1, 1, joueur[i].val1, joueur[i].val2, joueur[i].piece);
-                        return retirer(i);
-                    } if (v22 == joueur[i].val1) {
                         v22 = joueur[i].val2;
-                        tableau(2, 0, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                        tableau(1, 0, joueur[i].val1, joueur[i].val2, '');
                         return retirer(i);
-                    } if (v22 == joueur[i].val2) {
-                        v22 = joueur[i].val1;
-                        tableau(2, 1, joueur[i].val1, joueur[i].val2, joueur[i].piece);
+                    }
+                    if(eval(v11) == eval(joueur[i].val2)) {
+                        v11 = joueur[i].val1;
+                        tableau(1, 0, joueur[i].val1, joueur[i].val2, '');
+                        return retirer(i);
+                    }
+                    if(eval(v22) == eval(joueur[i].val1)) {
+                        v22 = joueur[i].val2;
+                        tableau(2, 0, joueur[i].val1, joueur[i].val2, '');
                         return retirer(i);
                     }
                 } else {
-                    al.innerHTML = "peça invalida";
+                    al.innerHTML = "Piece invalide";
                     al.style.display = "block";
                     el[i].style.border = "0px"
                     setTimeout(() => { al.style.display = "none" }, 3000);
@@ -374,19 +483,22 @@ function joueurjoue() {
                 }
             }
         }
-    }
+    // }
 }
 function tableau(l, lv, vl1, vl2, styl) {
     var le = document.querySelectorAll(".emg");
     var ld = document.querySelectorAll(".emd");
-    if (vl1 == 6 && vl2 == 6) {
-        document.querySelector(".emc").style.backgroundImage = "url('" + styl + "')";
+    if (firstTime) {
+        // document.querySelector(".emc").style.backgroundImage = "url('" + styl + "')";
+        creerDominoTableauMilieu(vl1,vl2)
+        firstTime = false;
     } else {
+
         if (vl1 == vl2) {
             lv = 2;
         }
         if (l == 1) {
-            le[qle].style.backgroundImage = "url('" + styl + "')";
+            // le[qle].style.backgroundImage = "url('" + styl + "')";
             if (led >= 3) {
                 if (lv == 0) {
                     le[qle].style.transform = "rotate(90deg)";
@@ -426,9 +538,10 @@ function tableau(l, lv, vl1, vl2, styl) {
                 }
             }
             qle += 1;
-            clonerPieceTableau(1);
+            // clonerPieceTableau(1);
+            creerDominoTableau(1,vl1,vl2)
         } else {
-            ld[qld].style.backgroundImage = "url('" + styl + "')";
+            // ld[qld].style.backgroundImage = "url('" + styl + "')";
             if (ldd <= 93) {
                 if (lv == 0) {
                     ld[qld].style.transform = "rotate(270deg)";
@@ -468,7 +581,8 @@ function tableau(l, lv, vl1, vl2, styl) {
                 }
             }
             qld += 1;
-            clonerPieceTableau(2);
+            // clonerPieceTableau(2);
+            creerDominoTableau(2,vl1,vl2)
         }
     }
 }
@@ -478,4 +592,45 @@ function clonerPieceTableau(p) {
     ori = document.querySelector(ld);
     var copy = ori.cloneNode(true);
     locopy.appendChild(copy);
+}
+
+function creerDominoTableau(p,val1,val2) {
+    var ld = (p == 1) ? "emg" : "emd";
+    const dominoesDiv = document.querySelectorAll('.tableau');
+    const div1 = document.createElement("div");
+    div1.classList.add("piece");
+    div1.classList.add(`${ld}`);
+    const topDiv = document.createElement("div");
+    topDiv.classList.add("top");
+    topDiv.innerText = `${val1}`;
+    const middleDiv = document.createElement("div");
+    middleDiv.classList.add("middle");
+    middleDiv.innerText = ":";
+    const bottomDiv = document.createElement("div");
+    bottomDiv.classList.add("bottom");
+    bottomDiv.innerText = `${val2}`;
+    div1.appendChild(topDiv);
+    div1.appendChild(middleDiv);
+    div1.appendChild(bottomDiv);
+    dominoesDiv[0].appendChild(div1);
+}
+
+function creerDominoTableauMilieu(val1,val2) {
+    const dominoesDiv = document.querySelectorAll('.tableau');
+    const div1 = document.createElement("div");
+    div1.classList.add("piece");
+    div1.classList.add("emc");
+    const topDiv = document.createElement("div");
+    topDiv.classList.add("top");
+    topDiv.innerText = `${val1}`;
+    const middleDiv = document.createElement("div");
+    middleDiv.classList.add("middle");
+    middleDiv.innerText = ":";
+    const bottomDiv = document.createElement("div");
+    bottomDiv.classList.add("bottom");
+    bottomDiv.innerText = `${val2}`;
+    div1.appendChild(topDiv);
+    div1.appendChild(middleDiv);
+    div1.appendChild(bottomDiv);
+    dominoesDiv[0].appendChild(div1);
 }

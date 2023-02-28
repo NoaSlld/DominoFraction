@@ -135,14 +135,14 @@ function createAndPushOneDomino(){
 
 
 function generatefirst7dominos(){
-    sixNum = Math.floor(Math.random() * 10 ) + 1;
-    sixDenum = Math.floor(Math.random() * 10 ) + 1;
+    sixNum = Math.floor(Math.random() * 9 ) + 2;
+    sixDenum = Math.floor(Math.random() * 9 ) + 2;
     if (sixDenum ==  sixNum || sixDenum == 1 ){
         generatefirst7dominos();
         dominos = [];
     } 
-    sixNumBis = Math.floor(Math.random() * 10 ) + 1;
-    if ((sixDenumBis = Math.floor(Math.random() * 10 ) + 1) ==  sixNumBis || sixDenumBis == 1 ){
+    sixNumBis = Math.floor(Math.random() * 9 ) + 2;
+    if ((sixDenumBis = Math.floor(Math.random() * 9 ) + 2) ==  sixNumBis || sixDenumBis == 1 ){
         generatefirst7dominos();
         dominos = [];
     } 
@@ -152,7 +152,7 @@ function generatefirst7dominos(){
     for (let aux = 0 ; aux < 6 ; aux++){
         dominos.push({
             val1: reduce(prodNum,prodDenum)[0] + "/" + reduce(prodNum,prodDenum)[1],
-            val2: (Math.floor(Math.random() * 10 ) + 1) + "/" + (Math.floor(Math.random() * 10 ) + 1) + " * " + (Math.floor(Math.random() * 10 ) + 1)  + "/" + (Math.floor(Math.random() * 10 ) + 1) 
+            val2: (Math.floor(Math.random() * 9 ) + 2) + "/" + (Math.floor(Math.random() * 9 ) + 2) + " * " + (Math.floor(Math.random() * 9 ) + 2)  + "/" + (Math.floor(Math.random() * 9 ) + 2) 
         });
     }
     dominos.push({

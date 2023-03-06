@@ -16,7 +16,7 @@ function createDomino(nb){
     let [fraction1, fraction2] = dominos[nb].val2.split('+');
     let [numerator1, denominator1] = fraction1.split('/');
     let [numerator2, denominator2] = fraction2.split('/');
-    prodNum = numerator1 * numerator2
+    prodNum = eval(numerator1*denominator2 + numerator2*denominator1)
     prodDenum = denominator1 * denominator2
     return reduce(prodNum,prodDenum)[0] + "/" + reduce(prodNum,prodDenum)[1]
 }

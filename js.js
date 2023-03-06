@@ -278,7 +278,9 @@ function JeuBlock() {
     var n = 0;
     for (var i = 0; i < joueur.length; i++) {
         // Faire les eval des valeurs des pièces les plus à gauche & droite sur le plateau
-        if(eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1) || firstTime) {
+        if ( firstTime || eval(v11) == eval(joueur[i].val1) || eval(v22) == eval(joueur[i].val2) 
+            || eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1)) {
+        // if(eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1) || firstTime) {
         // if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
             n += 1;
             break;
@@ -286,7 +288,9 @@ function JeuBlock() {
     }
     for (var q = 0; q < 3; q++) {
         for (var i = 0; i < bot[q].length; i++) {
-            if(eval(v11) == eval(bot[q][i].val2) || eval(v22) == eval(bot[q][i].val2)) {
+            if (eval(v11) == eval(bot[q][i].val1) || eval(v22) == eval(bot[q][i].val2)
+                || eval(v11) == eval(bot[q][i].val2) || eval(v22) == eval(bot[q][i].val1)) {
+            // if(eval(v11) == eval(bot[q][i].val2) || eval(v22) == eval(bot[q][i].val2)) {
             // if (v11 == bot[q][i].val1 || v22 == bot[q][i].val2
             //     || v11 == bot[q][i].val2 || v22 == bot[q][i].val1) {
                 n += 1;
@@ -385,7 +389,7 @@ function botjeu() {
     //     qui +=1;
     //     return jouer();
     // }
-    console.log('0');
+    // console.log('0');
     for (var i = 0; i <= bot[qui].length; i++) {
         if (i == bot[qui].length) {
             qui+=1;
@@ -423,15 +427,29 @@ function botjeu() {
         //     qui +=1;
         //     return jouer();
         // }
-        if(eval(v11) == eval(bot[qui][i].val2)){
-            v11 = bot[qui][i].val1;
+        if(eval(v11) == eval(bot[qui][i].val1)){
+            test(i);
+            console.log('v11 == bot val1', eval(v11) == eval(bot[qui][i].val1));
+            v11 = bot[qui][i].val2;
             tableau(1, 0, bot[qui][i].val1, bot[qui][i].val2, '');
             el[i].remove();
             bot[qui].splice(i, 1);
             qui +=1;
             return jouer();
         }
+        if(eval(v11) == eval(bot[qui][i].val2)){
+            test(i);
+            console.log('v11 == bot val2', eval(v11) == eval(bot[qui][i].val2));
+            v11 = bot[qui][i].val1;
+            tableau(1, 1, bot[qui][i].val1, bot[qui][i].val2, '');
+            el[i].remove();
+            bot[qui].splice(i, 1);
+            qui +=1;
+            return jouer();
+        }
         if(eval(v22) == eval(bot[qui][i].val1)){
+            test(i);
+            console.log('v22 == bot val1', eval(v22) == eval(bot[qui][i].val1));
             v22 = bot[qui][i].val2;
             tableau(2, 0, bot[qui][i].val1, bot[qui][i].val2, '');
             el[i].remove();
@@ -439,7 +457,24 @@ function botjeu() {
             qui +=1;
             return jouer();
         }
+        if(eval(v22) == eval(bot[qui][i].val2)){
+            test(i);
+            console.log('v22 == bot val2', eval(v22) == eval(bot[qui][i].val2));
+            v22 = bot[qui][i].val1;
+            tableau(2, 1, bot[qui][i].val1, bot[qui][i].val2, '');
+            el[i].remove();
+            bot[qui].splice(i, 1);
+            qui +=1;
+            return jouer();
+        }
     }
+}
+
+function test(i){
+    console.log('Old v11', v11)
+    console.log('Old v22', v22)
+    console.log('Bot val1', bot[qui][i].val1)
+    console.log('Bot val2', bot[qui][i].val2)
 }
 function retirer(posi) {
     var el = document.querySelectorAll(".joueur .piece");
@@ -523,7 +558,8 @@ function joueurjoue() {
         for (var i = 0; i < el.length; i++) {
             if (el[i].style.border == "0.5px solid black") {
                 // console.log("0");
-                if(firstTime == true || eval(v11) == eval(joueur[i].val2) || eval(v22) == eval(joueur[i].val1)){
+                if(firstTime == true || eval(v11) == eval(joueur[i].val1) || eval(v11) == eval(joueur[i].val2)
+                    || eval(v22) == eval(joueur[i].val1) || eval(v22) == eval(joueur[i].val2)){
                     // console.log("1")
                 // if (v11 == joueur[i].val1 || v22 == joueur[i].val2 || v11 == joueur[i].val2 || v22 == joueur[i].val1) {
                     // if (v11 == joueur[i].val1) {
@@ -544,20 +580,29 @@ function joueurjoue() {
                     //     return retirer(i);
                     // }
                     if(firstTime == true){
-                        // console.log("2");
                         v11 = joueur[i].val1;
                         v22 = joueur[i].val2;
+                        tableau(1, 0, joueur[i].val1, joueur[i].val2, '');
+                        return retirer(i);
+                    }
+                    if(eval(v11) == eval(joueur[i].val1)) {
+                        v11 = joueur[i].val2;
                         tableau(1, 0, joueur[i].val1, joueur[i].val2, '');
                         return retirer(i);
                     }
                     if(eval(v11) == eval(joueur[i].val2)) {
                         v11 = joueur[i].val1;
-                        tableau(1, 0, joueur[i].val1, joueur[i].val2, '');
+                        tableau(1, 1, joueur[i].val1, joueur[i].val2, '');
                         return retirer(i);
                     }
                     if(eval(v22) == eval(joueur[i].val1)) {
                         v22 = joueur[i].val2;
                         tableau(2, 0, joueur[i].val1, joueur[i].val2, '');
+                        return retirer(i);
+                    }
+                    if(eval(v22) == eval(joueur[i].val2)) {
+                        v22 = joueur[i].val1;
+                        tableau(2, 1, joueur[i].val1, joueur[i].val2, '');
                         return retirer(i);
                     }
                 } else {

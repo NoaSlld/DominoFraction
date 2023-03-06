@@ -51,11 +51,12 @@ function createDomino(nb){
 function createAndPushOneDomino(){
   g = Math.floor(Math.random() * 5 ) + 1;
   h = Math.floor(Math.random() * 5 ) + 1;
+  let [fraction1, fraction2] = dominos[aux].val2.split('*');
+  let [numerator1, denominator1] = fraction1.split('/');
+  let [numerator2, denominator2] = fraction2.split('/');
   
   if (i <= 6) {
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
+
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*h,denominator1)[0] + "/" + reduce(numerator1*h,denominator1)[1] + " * " + reduce(numerator2,denominator2*h)[0] + "/" + reduce(numerator2,denominator2*h)[1]
@@ -66,9 +67,7 @@ function createAndPushOneDomino(){
         aux = 0;
         nb = 4;
     }
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
+ 
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*g,denominator1*h)[0] + "/" + reduce(numerator1*g,denominator1*h)[1] + " * " + reduce(numerator2*h,denominator2*g)[0] + "/" + reduce(numerator2*h,denominator2*g)[1]
@@ -80,9 +79,6 @@ function createAndPushOneDomino(){
         aux = 0;
         nb = 3;
     }
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*g,denominator1)[0] + "/" + reduce(numerator1*g,denominator1)[1] + " * " + reduce(numerator2,denominator2*g)[0] + "/" + reduce(numerator2,denominator2*g)[1]
@@ -94,9 +90,7 @@ function createAndPushOneDomino(){
         aux = 0;
         nb = 2;
     }
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
+
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*h,denominator1*g)[0] + "/" + reduce(numerator1*h,denominator1*g)[1] + " * " + reduce(numerator2*g,denominator2*h)[0] + "/" + reduce(numerator2*g,denominator2*h)[1]
@@ -107,9 +101,6 @@ function createAndPushOneDomino(){
         aux = 0;
         nb = 1;
     }
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*h,denominator1*g)[0] + "/" + reduce(numerator1*h,denominator1*g)[1] + " * " + reduce(numerator2*g,denominator2*h)[0] + "/" + reduce(numerator2*g,denominator2*h)[1]
@@ -120,9 +111,6 @@ function createAndPushOneDomino(){
         aux = 0;
         nb = 0;
     }
-    let [fraction1, fraction2] = dominos[aux].val2.split('*');
-    let [numerator1, denominator1] = fraction1.split('/');
-    let [numerator2, denominator2] = fraction2.split('/');
     dominos.push({
         val1: createDomino(nb),
         val2: reduce(numerator1*h,denominator1*g)[0] + "/" + reduce(numerator1*h,denominator1*g)[1] + " * " + reduce(numerator2*g,denominator2*h)[0] + "/" + reduce(numerator2*g,denominator2*h)[1]

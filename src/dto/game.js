@@ -1,6 +1,7 @@
 class Game {
     dominos;
     players;
+    generator;
     // pioche;
     valeurGauche = '';
     valeurDroite = '';
@@ -16,13 +17,14 @@ class Game {
     firstTime = true;
 
 
-    constructor() {
-        dominos = []
-        players = [
+    constructor(generator) {
+        this.dominos = []
+        this.players = [
             new Joueur(),
             new Bot(),
             new Bot(),
             new Bot()]
+        this.generator = generator
         // pioche = []
     }
 
@@ -36,14 +38,14 @@ class Game {
             setTimeout(jouer, 2500);
             return;
         });
-        //document.querySelector(".droite").addEventListener("drop",()=>{});
     
-        generatefirst7dominos()
-        for( i ; i <= 21;){
-            createAndPushOneDomino()
-        }
-        Distribuerpieces();
-        console.log(dominos);
+        this.dominos = this.generator.generate(this.dominos)
+        // this.generatefirst7dominos()
+        // for( let i ; i <= 21;){
+        //     createAndPushOneDomino()
+        // }
+        this.distribuerPieces();
+        console.log('game.charger()',this.dominos);
     }
 
     distribuerPieces() {

@@ -2,7 +2,7 @@ class Player {
     dominos;
 
     constructor() {
-        dominos = []
+        this.dominos = []
     }
 
     jouer(game) {

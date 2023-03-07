@@ -1,10 +1,10 @@
 class Calculator {
-    reduce(number,denomin){
+    static reduce(number,denomin){
         let gcd = this.gcd(number,denomin);
         return [number/gcd, denomin/gcd];
     }
 
-    gcd(a,b) {
+    static gcd(a,b) {
         return b ? this.gcd(b, a%b) : a;
     }
 }

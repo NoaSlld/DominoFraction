@@ -20,7 +20,7 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     position: absolute;
     border: 3px solid rgb(112, 72, 25);
     border-radius: 10px;
-    width: 84% ;
+    width: 84%;
     height: 74%;
     top:13%;
     left: 8%;
@@ -31,9 +31,9 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     top:13%;
     z-index: 1;
     border-radius: 10px;
-    left: 15%;
-    width: 32% ;
-    height:66%;
+    left: 8%;
+    width: 42%;
+    height: 75%;
     background-color: transparent;
 }
 .droite{
@@ -42,10 +42,10 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     background-color: transparent;
     border-radius: 10px;
     z-index: 1;
-    left: 49%;
+    right: 8%;
     top:13%;
-    width: 36% ;
-    height: 66%;
+    width: 42%;
+    height: 75%;
 }
 .emc, .emd ,.emg{
     position: absolute;
@@ -58,11 +58,11 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     left: 46%;
 }
 .emg{
-    left: 40%; 
+    left: 41%; 
     transform: rotate(270deg); 
 }
 .emd{
-    left: 52%;
+    left: 51%;
     transform: rotate(90deg);
 }
 .piece{

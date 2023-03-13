@@ -2,7 +2,7 @@ let dominos = [];
 joueur = [];
 bot = new Array(4);
 
-let qui = 0, v11 = '', v22 = '', qle = 0, qld = 0, led = 43, ldd = 49, tole = 45, told = 55, localdrop = 0, sese = 0, firstTime = true;
+let qui = 0, v11 = '', v22 = '', qle = 0, qld = 0, led = 41, ldd = 51, tole = 38, told = 62, localdrop = 0, sese = 0, firstTime = true;
 function charger() {
     bot[0] = [];
     bot[1] = [];
@@ -622,23 +622,23 @@ function tableau(l, lv, vl1, vl2, styl) {
                 if (lv == 0) {
                     le[qle].style.transform = "rotate(90deg)";
                     le[qle].style.left = String(led) + "%";
-                    led -= 4;
+                    led -= 6;
                 } if (lv == 1) {
                     le[qle].style.transform = "rotate(270deg)";
                     le[qle].style.left = String(led) + "%";
-                    led -= 4;
+                    led -= 6;
                 } if (lv == 2) {
                     led += 1;
                     le[qle].style.transform = "rotate(0deg)";
                     le[qle].style.left = String(led) + "%";
-                    led -= 3;
+                    led -= 6;
                 }
             } else {
-                if (lv == 2 && tole != 45) {
+                if (lv == 2 && tole == 38) {
                     le[qle].style.transform = "rotate(90deg)";
                     le[qle].style.top = String(tole) + "%";
                     le[qle].style.left = "3.5%";
-                    tole -= 4.5;
+                    tole -= 6;
                 } else {
                     if (lv == 2) {
                         lv = 0;
@@ -648,12 +648,12 @@ function tableau(l, lv, vl1, vl2, styl) {
                     le[qle].style.transform = "rotate(180deg)";
                     le[qle].style.top = String(tole) + "%"
                     le[qle].style.left = "3.5%";
-                    tole -= 5.5;
+                    tole -= 6;
                 } if (lv == 1) {
                     le[qle].style.transform = "rotate(0deg)";
                     le[qle].style.top = String(tole) + "%";
                     le[qle].style.left = "3.5%";
-                    tole -= 5.5;
+                    tole -= 6;
                 }
             }
             qle += 1;
@@ -665,35 +665,35 @@ function tableau(l, lv, vl1, vl2, styl) {
                 if (lv == 0) {
                     ld[qld].style.transform = "rotate(270deg)";
                     ld[qld].style.left = String(ldd) + "%";
-                    ldd += 4;
+                    ldd += 6;
                 } if (lv == 1) {
                     ld[qld].style.transform = "rotate(90deg)";
                     ld[qld].style.left = String(ldd) + "%";
-                    ldd += 4;
+                    ldd += 6;
                 } if (lv == 2) {
                     ldd -= 1;
                     ld[qld].style.transform = "rotate(0deg)";
                     ld[qld].style.left = String(ldd) + "%";
-                    ldd += 3;
+                    ldd += 6;
                 }
             } else {
-                if (lv == 2 && told != 55) {
+                if (lv == 2 && told == 62) {
                     ld[qld].style.transform = "rotate(90deg)";
                     ld[qld].style.top = String(told) + "%";
                     ld[qld].style.left = "93%";
-                    told -= 5;
+                    told -= 6;
                 } else {
                     if (lv == 2) {
                         lv = 0;
                     }
                 }
                 if (lv == 0) {
-                    ld[qld].style.transform = "rotate(-1deg)";
+                    ld[qld].style.transform = "rotate(0deg)";
                     ld[qld].style.top = String(told) + "%"
                     ld[qld].style.left = "93%";
                     told += 6;
                 } if (lv == 1) {
-                    ld[qld].style.transform = "rotate(184deg)";
+                    ld[qld].style.transform = "rotate(180deg)";
                     ld[qld].style.top = String(told) + "%";
                     ld[qld].style.left = "93%";
                     told += 6;

@@ -20,10 +20,10 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     position: absolute;
     border: 3px solid rgb(112, 72, 25);
     border-radius: 10px;
-    width: 70% ;
+    width: 84% ;
     height: 74%;
     top:13%;
-    left: 15%;
+    left: 8%;
 }
 .gauche{
     position: absolute;

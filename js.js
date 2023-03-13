@@ -216,14 +216,14 @@ function afficherDomino(query, pobj, numdecopy) {
     const topDiv = document.createElement("div");
     topDiv.classList.add("top");
     topDiv.innerText = `${dominos[pobj[numdecopy]].val1}`;
-    const middleDiv = document.createElement("div");
-    middleDiv.classList.add("middle");
-    middleDiv.innerText = ":";
+    // const middleDiv = document.createElement("div");
+    // middleDiv.classList.add("middle");
+    // middleDiv.innerText = ":";
     const bottomDiv = document.createElement("div");
     bottomDiv.classList.add("bottom");
     bottomDiv.innerText = `${dominos[pobj[numdecopy]].val2}`;
     div1.appendChild(topDiv);
-    div1.appendChild(middleDiv);
+    // div1.appendChild(middleDiv);
     div1.appendChild(bottomDiv);
     dominoesDiv[0].appendChild(div1);
 }
@@ -722,14 +722,14 @@ function creerDominoTableau(p,val1,val2) {
     const topDiv = document.createElement("div");
     topDiv.classList.add("top");
     topDiv.innerText = `${val1}`;
-    const middleDiv = document.createElement("div");
-    middleDiv.classList.add("middle");
-    middleDiv.innerText = ":";
+    // const middleDiv = document.createElement("div");
+    // middleDiv.classList.add("middle");
+    // middleDiv.innerText = ":";
     const bottomDiv = document.createElement("div");
     bottomDiv.classList.add("bottom");
     bottomDiv.innerText = `${val2}`;
     div1.appendChild(topDiv);
-    div1.appendChild(middleDiv);
+    // div1.appendChild(middleDiv);
     div1.appendChild(bottomDiv);
     dominoesDiv[0].appendChild(div1);
 }
@@ -742,14 +742,14 @@ function creerDominoTableauMilieu(val1,val2) {
     const topDiv = document.createElement("div");
     topDiv.classList.add("top");
     topDiv.innerText = `${val1}`;
-    const middleDiv = document.createElement("div");
-    middleDiv.classList.add("middle");
-    middleDiv.innerText = ":";
+    // const middleDiv = document.createElement("div");
+    // middleDiv.classList.add("middle");
+    // middleDiv.innerText = ":";
     const bottomDiv = document.createElement("div");
     bottomDiv.classList.add("bottom");
     bottomDiv.innerText = `${val2}`;
     div1.appendChild(topDiv);
-    div1.appendChild(middleDiv);
+    // div1.appendChild(middleDiv);
     div1.appendChild(bottomDiv);
     dominoesDiv[0].appendChild(div1);
 }

@@ -1,8 +1,10 @@
 class Player {
+    id;
     dominos;
 
-    constructor() {
-        this.dominos = []
+    constructor(id) {
+        this.id = id;
+        this.dominos = [];
     }
 
     jouer(game) {

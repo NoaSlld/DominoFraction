@@ -140,7 +140,7 @@ class Game {
     isGameEnded() {
         for(let i=0 ; i < this.players.length; i++) {
             if(this.players[i].dominos.length == 0) {
-                return players[i].id;
+                return this.players[i].id;
             }
         }
         return -1;
@@ -151,11 +151,9 @@ class Game {
     }
     
     jouer() {
-        console.log('jouer().currentPlayer', this.currentPlayer)
         document.querySelector(".infoBis").style.display = "block";
         document.querySelector(".passer").style.display = "block";
         let info = document.querySelector(".info");
-        console.log('this (jouer)',this)
         let gan = this.isGameEnded();
         if (gan >= 0) {
             switch (gan) {
@@ -163,23 +161,30 @@ class Game {
                     info.innerHTML = "Vous avez gagné";
                     info.style.display = "block";
                     return this.gameEnded();
-                default:
-                    let winnerId = (gan == 1) ? "2" : (gan == 2) ? "3" : "4";
-                    info.innerHTML = "Joueur " + winnerId + " a gagné";
+                case 1:
+                    info.innerHTML = "Joueur 2 a gagné";
+                    console.log('Joueur 2 a gagné');
+                    info.style.display = "block";
+                    return this.gameEnded();
+                case 2:
+                    info.innerHTML = "Joueur 3 a gagné";
+                    console.log('Joueur 3 a gagné');
+                    info.style.display = "block";
+                    return this.gameEnded();
+                case 3:
+                    info.innerHTML = "Joueur 4 a gagné";
+                    console.log('Joueur 4 a gagné');
                     info.style.display = "block";
                     return this.gameEnded();
             }
         }
-
-        if (this.isGameBlocked() === 0) {
+        
+        if (this.isGameBlocked() == 0) {
             info.innerHTML = "Jeu bloqué";
             info.style.display = "block";
             document.querySelector(".infoBis").style.display = "block";
             return this.gameEnded();
         }
-
-        console.log('this2 (jouer)',this)
-        console.log(this.currentPlayer)
 
         if(this.currentPlayer instanceof Joueur) {
             info.innerHTML = "A toi de jouer <br>glisse ou double clique sur le domino";

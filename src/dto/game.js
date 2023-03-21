@@ -314,12 +314,12 @@ class Game {
                         }
                     }
                     if (rotation == 0) {
-                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(-1deg)";
+                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(0deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%"
                         partieDroite[this.nbrPieceADroite].style.left = "93%";
                         this.hauteurADroite += 6;
                     } if (rotation == 1) {
-                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(184deg)";
+                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(180deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
                         partieDroite[this.nbrPieceADroite].style.left = "93%";
                         this.hauteurADroite += 6;

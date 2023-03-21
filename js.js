@@ -10,7 +10,7 @@ function charger() {
     document.querySelector(".passer").addEventListener("click", () => {
         document.querySelector(".info").innerHTML = "Tour passé !";
         document.querySelector(".info").style.display = "block";
-        qui = 0;
+        // qui = 0;
         document.querySelector(".passer").style.display = "none";
         setTimeout(jouer, 2500);
         return;
@@ -464,6 +464,7 @@ function test(i){
     console.log('Bot val1', bot[qui][i].val1)
     console.log('Bot val2', bot[qui][i].val2)
 }
+
 function retirer(posi) {
     var el = document.querySelectorAll(".joueur .piece");
     joueur.splice(posi, 1);
@@ -471,6 +472,7 @@ function retirer(posi) {
     qui = 0;
     return jouer();
 }
+
 function appeljeu(el) {
     el.style.border = "0px solid black";
     el.addEventListener("dblclick", function () {
@@ -604,6 +606,7 @@ function joueurjoue() {
         }
     // }
 }
+
 function tableau(l, lv, vl1, vl2, styl) {
     var le = document.querySelectorAll(".emg");
     var ld = document.querySelectorAll(".emd");

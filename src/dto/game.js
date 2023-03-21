@@ -8,10 +8,10 @@ class Game {
     
     nbrPieceAGauche = 0
     nbrPieceADroite = 0
-    distanceAGauche = 43
-    distanceADroite = 49
-    hauteurAGauche = 45
-    hauteurADroite = 55
+    distanceAGauche = 41
+    distanceADroite = 51
+    hauteurAGauche = 38
+    hauteurADroite = 62
     
     firstTime;
     currentPlayer;
@@ -95,14 +95,10 @@ class Game {
         const topDiv = document.createElement("div");
         topDiv.classList.add("top");
         topDiv.innerText = `${dominos[pobj[numdecopy]].valGauche}`;
-        const middleDiv = document.createElement("div");
-        middleDiv.classList.add("middle");
-        middleDiv.innerText = ":";
         const bottomDiv = document.createElement("div");
         bottomDiv.classList.add("bottom");
         bottomDiv.innerText = `${dominos[pobj[numdecopy]].valDroite}`;
         div1.appendChild(topDiv);
-        div1.appendChild(middleDiv);
         div1.appendChild(bottomDiv);
         dominoesDiv[0].appendChild(div1);
     }

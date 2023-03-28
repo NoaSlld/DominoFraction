@@ -138,6 +138,7 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     display: flex;
     justify-content: center;
     top: 1%;
+    z-index: 0;
     width: 100%;
 }
 .bot1 .piece{
@@ -212,7 +213,7 @@ footer a{
 	align-items: center;
     background-image: none !important;;
     margin: 0px 15px 0px 15px;
- 
+    color: black;
 }
 
 .top {
@@ -239,3 +240,11 @@ footer a{
 	height: 10%;
 	padding: 0 10px;
 } */
+
+.change-piece-couleur, .change-text-piece-couleur{
+    display: flex; 
+}
+
+#BoutonCouleur, #BoutonTextCouleur, #couleur, #couleurTexte {
+    z-index: 999;
+}

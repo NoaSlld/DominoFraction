@@ -10,6 +10,7 @@
     <title>DominoFraction</title>
 </head>
 <body>
+    
     <div class="gauche"></div>
     <div class="droite"></div>
     <div class="tableau">
@@ -33,6 +34,18 @@
     <div class="info">Joueur 1 commence</div>
     <footer></footer>
     <button class="passer">Passez votre tour</button>
+
+    <div class="change-piece-couleur">
+        <label for="couleur">Choisissez couleur pièces :</label>
+        <input type="color" id="couleur" name="couleur" value="#ffffff">
+        <button id="BoutonCouleur" onclick="Game.changerCouleur()">Changer la couleur</button>
+    </div>
+
+    <div class="change-text-piece-couleur">
+        <label for="couleur">Choisir couleur du texte :</label>
+        <input type="color" id="couleurTexte" name="couleur">
+        <button id="BoutonTextCouleur" onclick="Game.changerCouleurTexte()">Changer la couleur</button>
+    </div>
 
     <script type="text/javascript" src="src/dto/calculator.js"></script>
     <script type="text/javascript" src="src/generation/generator.js"></script>

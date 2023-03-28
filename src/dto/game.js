@@ -89,12 +89,16 @@ class Game {
     }
     
     afficherDomino(query, dominos, pobj, numdecopy) {
+        let couleur = document.getElementById("couleur").value;
+        let couleurTexte = document.getElementById("couleurTexte").value;
         const dominoesDiv = document.querySelectorAll(`${query}`);
         const div1 = document.createElement("div");
         div1.classList.add("piece");
         const topDiv = document.createElement("div");
         topDiv.classList.add("top");
         topDiv.innerText = `${dominos[pobj[numdecopy]].valGauche}`;
+        div1.style.backgroundColor = couleur;
+        div1.style.color = couleurTexte;
         const bottomDiv = document.createElement("div");
         bottomDiv.classList.add("bottom");
         bottomDiv.innerText = `${dominos[pobj[numdecopy]].valDroite}`;
@@ -331,12 +335,32 @@ class Game {
         }
     }
 
+    static changerCouleur() {
+        couleur = document.getElementById("couleur").value;
+        let pieces = document.getElementsByClassName("piece");
+        for(let i = 0; i < pieces.length; i++){
+            pieces[i].style.backgroundColor = couleur;
+        }
+    }
+
+    static changerCouleurTexte() {
+        couleur = document.getElementById("couleurTexte").value;
+        let pieces = document.getElementsByClassName("piece");
+        for(let i = 0; i < pieces.length; i++){
+            pieces[i].style.color = couleur;
+        }
+    }
+
     creerDominoTableau(p, valGauche, valDroite) {
+        let couleur = document.getElementById("couleur").value;
+        let couleurTexte = document.getElementById("couleurTexte").value;
         let partie = (p == 1) ? "emg" : "emd";
         const dominoesDiv = document.querySelectorAll('.tableau');
         const div1 = document.createElement("div");
         div1.classList.add("piece");
         div1.classList.add(`${partie}`);
+        div1.style.backgroundColor = couleur;
+        div1.style.color = couleurTexte;
         const topDiv = document.createElement("div");
         topDiv.classList.add("top");
         topDiv.innerText = `${valGauche}`;
@@ -349,10 +373,14 @@ class Game {
     }
     
     creerDominoTableauMilieu(valGauche, valDroite) {
+        let couleur = document.getElementById("couleur").value;
+        let couleurTexte = document.getElementById("couleurTexte").value;
         const dominoesDiv = document.querySelectorAll('.tableau');
         const div1 = document.createElement("div");
         div1.classList.add("piece");
         div1.classList.add("emc");
+        div1.style.backgroundColor = couleur;
+        div1.style.color = couleurTexte;
         const topDiv = document.createElement("div");
         topDiv.classList.add("top");
         topDiv.innerText = `${valGauche}`;

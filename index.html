@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>DominoFraction</title>
+</head>
+<body>
+
+    <img src="../img/background.png" class="background"></img>
+    <img src="../img/logo.png" class="logo"></img>
+
+    <div class="liste-choix">
+        <p class="liste-choix-titre">Mode de génération</p>
+        <div class="liste-choix-generation">
+          <label>
+            <input type="radio" name="modeGen"/>
+            <span>Multiplication</span>
+          </label>
+          <label>
+            <input type="radio" name="modeGen"/>                         
+            <span>Addition</span>
+          </label>
+          <label>
+            <input type="radio" name="modeGen"/>                         
+            <span>Division</span>
+          </label>
+          <label>
+            <input type="radio" name="modeGen"/>                         
+            <span>Soustraction</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="liste-choix-jeu">
+        <p class="liste-choix-titre-jeu">Mode de jeu</p>
+        <div class="liste-choix-mode">
+          <label>
+            <input type="radio" name="modeJeu"/>
+            <span>Solo</span>
+          </label>
+          <label>
+            <input type="radio" name="modeJeu"/>                         
+            <span>Multijoueur</span>
+          </label>
+        </div>
+      </div>
+
+    <script type="text/javascript" src="src/dto/calculator.js"></script>
+    <script type="text/javascript" src="src/generation/generator.js"></script>
+    <script type="text/javascript" src="src/dto/player.js"></script>
+    <script type="text/javascript" src="src/dto/domino.js"></script>
+    <script type="text/javascript" src="src/dto/bot.js"></script>
+    <script type="text/javascript" src="src/dto/joueur.js"></script>
+    <script type="text/javascript" src="src/generation/multiplicationGenerator.js"></script>
+    <script type="text/javascript" src="src/dto/game.js"></script>
+    <script type="text/javascript" src="src/main.js"></script>
+
+</body>
+</html>

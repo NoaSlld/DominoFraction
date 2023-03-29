@@ -1,0 +1,112 @@
+.background {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.logo {
+    width: 16%;
+    height: 30%;
+    position: absolute;
+    left: 42%;
+}
+
+.liste-choix{
+    top: 35%;
+    width: 24%;
+    left: 38%;
+    position: absolute;
+    cursor: pointer;  
+  }
+  .liste-choix input[type="radio"]{
+    position:absolute;
+    left:-9999px;
+  }
+  
+  .liste-choix-titre, .liste-choix-titre-jeu {
+  width: 100%;
+  display: block;
+  background: #3b99e6;
+  text-align: center;
+  padding: 0.55em 1em;
+  box-sizing: border-box;
+  color: #FFF;
+  text-shadow: 0 1px 0 #133f92;
+  border-radius: 0.2em;
+  }
+
+  .liste-choix:hover .liste-choix-titre {
+  border-radius:0.2em 0.2em 0 0;
+  }
+  .liste-choix-generation :nth-last-of-type(1) span{
+    border-radius:0 0 0.2em 0.2em;
+  }
+  .liste-choix input[type="radio"] + span {
+  color: #FFF;
+  background: #3b99e6;
+  padding: 0.55em 1em;
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  }
+
+  .liste-choix-generation {
+  position: absolute;
+  top: 25%;
+  padding-top: 2.1em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 250ms ease;
+  }
+
+  .liste-choix:hover .liste-choix-generation input[type="radio"] + span {
+  position: relative;
+  top: 0;
+  transition: all 250ms ease-in-out;
+  }
+
+  .liste-choix:hover input[type="radio"] + span:hover {
+  background:#133f92;
+  }
+
+  .liste-choix:hover input[type="radio"]:checked + span:hover {
+  background:#133f92;
+  }
+
+  .liste-choix input[type="radio"]:checked + span {
+  background: #3b99e6;
+  position: absolute;
+  top: 0em;
+  border-radius: 0.2em;
+  }
+
+
+  .liste-choix:hover input[type="radio"]:checked + span {
+  border-radius: 0;
+  }
+  .liste-choix:hover .liste-choix-generation label:nth-last-of-type(1) input[type="radio"]:checked + span{
+    border-radius:0 0 0.2em 0.2em;
+  }
+  
+  .liste-choix:hover .liste-choix-generation {
+  max-height: 540px;
+  }
+
+  .liste-choix-jeu{
+    top: 50%;
+    width: 24%;
+    left: 38%;
+    position: absolute;
+    cursor: pointer;  
+  }
+  .liste-choix input[type="radio"]{
+    position:absolute;
+    left:-9999px;
+  }

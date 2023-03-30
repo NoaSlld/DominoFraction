@@ -18,19 +18,26 @@ body{
   left: 0;
   top: 0;
   object-fit: cover;
-  object-position: left center;
-  position: fixed;
+  object-position: center;
   bottom: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
 
+.DivLogo {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .logo {
-    max-width: 16%;
+    width: 20%;
     height: 30%;
     position: absolute;
-    left: 42%;
 }
 
 .main-play-btn{
@@ -58,10 +65,10 @@ body{
 .main-play-btn:before{
     position: absolute;
     content: '';
-    left: 34px;
-    top: -8px;
+    left: 5px;
+    top: 0px;
     z-index: 3;
-    background-image: url(images/bg_btn.png);
+    background-image: url(img/bg_btn.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 25px;
@@ -77,9 +84,11 @@ body{
     #e3a700 -0px 7px,#e3a700 -0px 8px,
     #e3a700 -0px 9px,#e3a700 -0px 10px,
     #e3a700 -0px 11px;
+    color: #1227e4;
 }
 
 .main-play-btn{
+  left: 0;
   margin: 0 auto;
   width: 18%;
   height: 6%;
@@ -88,11 +97,13 @@ body{
   margin-bottom: 19px;
 }
 
-.main-links{
+.main-links {
   display: flex;
   position: absolute;
+  width: 100%;
+  justify-content: center;
   bottom: 10%;
-  left: 35%;
+  left: 0;
   z-index: 999;
 }
 
@@ -108,27 +119,17 @@ body{
 
 .main-links a{
   text-decoration: underline;
-  letter-spacing: 1px;
-  
 }
 
 @media(max-width:1300px){
-  .main-links {
-    max-width: 45%;
-    left: 15%;
-  }
   .main-play-btn {
     width: 30%;
   }
 }
 
 @media(max-width:1100px){
-  .logo{
-      max-width: 35%;
-      left: 35%;
-  }
-  .main-links {
-    left: 15%;
+  .logo {
+    width: 24%;
   }
   .main-play-btn {
     width: 40%;
@@ -136,11 +137,8 @@ body{
 }
 
 @media(max-width:960px){
-  .logo{
-      max-width: 35%;
-  }
-  .main-links {
-    left: 30%;
+  .logo {
+    width: 28%;
   }
   .main-play-btn {
     width: 40%;
@@ -148,28 +146,29 @@ body{
 }
 
 @media(max-width:800px){
-  .logo{
-      left: 32%;
-      max-width: 50%;
-  }
-  .main-links {
-    left: 5%;
+  .logo {
+    width: 32%;
   }
   .main-play-btn {
     width: 50%;
   }
 }
 
-@media(max-width:500px){
-  .logo{
-    left: 28%;
-    max-width: 60%;
-  }
-  .main-links{
-    left: 5%;
+@media(max-width:650px){
+  .logo {
+    width: 36%;
   }
   .main-play-btn {
-    width: 50%;
+    width: 55%;
+  }
+}
+
+@media(max-width:500px){
+  .logo {
+    width: 40%;
+  }
+  .main-play-btn {
+    width: 60%;
   }
 }
 

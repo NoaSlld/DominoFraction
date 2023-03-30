@@ -336,7 +336,7 @@ class Game {
     }
 
     static changerCouleur() {
-        couleur = document.getElementById("couleur").value;
+        let couleur = document.getElementById("couleur").value;
         let pieces = document.getElementsByClassName("piece");
         for(let i = 0; i < pieces.length; i++){
             pieces[i].style.backgroundColor = couleur;
@@ -344,10 +344,10 @@ class Game {
     }
 
     static changerCouleurTexte() {
-        couleur = document.getElementById("couleurTexte").value;
+        let couleurTexte = document.getElementById("couleurTexte").value;
         let pieces = document.getElementsByClassName("piece");
         for(let i = 0; i < pieces.length; i++){
-            pieces[i].style.color = couleur;
+            pieces[i].style.color = couleurTexte;
         }
     }
 

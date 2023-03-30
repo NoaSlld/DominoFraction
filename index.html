@@ -3,48 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <title>DominoFraction</title>
 </head>
 <body>
 
-    <img src="../img/background.png" class="background"></img>
-    <img src="../img/logo.png" class="logo"></img>
+    <div>
+      <img src="../img/background.png" class="background" alt="ImgBackground"></img>
+    </div>
+    
 
-    <div class="liste-choix">
-        <p class="liste-choix-titre">Mode de génération</p>
-        <div class="liste-choix-generation">
-          <label>
-            <input type="radio" name="modeGen"/>
-            <span>Multiplication</span>
-          </label>
-          <label>
-            <input type="radio" name="modeGen"/>                         
-            <span>Addition</span>
-          </label>
-          <label>
-            <input type="radio" name="modeGen"/>                         
-            <span>Division</span>
-          </label>
-          <label>
-            <input type="radio" name="modeGen"/>                         
-            <span>Soustraction</span>
-          </label>
-        </div>
-      </div>
+    <div>
+      <img src="../img/logo.png" class="logo" alt="DominoLogo"></img>
+    </div>
 
-      <div class="liste-choix-jeu">
-        <p class="liste-choix-titre-jeu">Mode de jeu</p>
-        <div class="liste-choix-mode">
-          <label>
-            <input type="radio" name="modeJeu"/>
-            <span>Solo</span>
-          </label>
-          <label>
-            <input type="radio" name="modeJeu"/>                         
-            <span>Multijoueur</span>
-          </label>
-        </div>
-      </div>
+
+    <a href="#" class="main-play-btn">Solo</a>
+    <a href="#" class="main-play-btn">Multijoueur</a>
+
+    <div class="main-links">
+      <span>
+          Copyright Université Clermont Auvergne
+      </span>
+    </div>
+
 
     <script type="text/javascript" src="src/dto/calculator.js"></script>
     <script type="text/javascript" src="src/generation/generator.js"></script>

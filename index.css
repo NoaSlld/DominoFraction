@@ -1,112 +1,175 @@
-.background {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+*{
+  box-sizing: border-box;
+  font-family: 'poppins' ;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+  background-color: #229ed9;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.background{
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: left center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .logo {
-    width: 16%;
+    max-width: 16%;
     height: 30%;
     position: absolute;
     left: 42%;
 }
 
-.liste-choix{
-    top: 35%;
-    width: 24%;
-    left: 38%;
-    position: absolute;
-    cursor: pointer;  
-  }
-  .liste-choix input[type="radio"]{
-    position:absolute;
-    left:-9999px;
-  }
-  
-  .liste-choix-titre, .liste-choix-titre-jeu {
-  width: 100%;
-  display: block;
-  background: #3b99e6;
-  text-align: center;
-  padding: 0.55em 1em;
-  box-sizing: border-box;
-  color: #FFF;
-  text-shadow: 0 1px 0 #133f92;
-  border-radius: 0.2em;
-  }
-
-  .liste-choix:hover .liste-choix-titre {
-  border-radius:0.2em 0.2em 0 0;
-  }
-  .liste-choix-generation :nth-last-of-type(1) span{
-    border-radius:0 0 0.2em 0.2em;
-  }
-  .liste-choix input[type="radio"] + span {
-  color: #FFF;
-  background: #3b99e6;
-  padding: 0.55em 1em;
-  display: block;
-  text-align: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  width: 100%;
-  }
-
-  .liste-choix-generation {
-  position: absolute;
-  top: 25%;
-  padding-top: 2.1em;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  max-height: 0;
-  transition: all 250ms ease;
-  }
-
-  .liste-choix:hover .liste-choix-generation input[type="radio"] + span {
+.main-play-btn{
+  top: 40%;
+  margin: 0px 20px;
+  color: #ffffff;
+  background: linear-gradient(97deg, rgba(108,203,255,1) 0%, rgba(0, 148, 255, 1) 100%);
+  display: flex;
   position: relative;
-  top: 0;
-  transition: all 250ms ease-in-out;
-  }
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;   
+  border-radius: 14px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.13);
+  font-family: Sigmar One;
+  box-shadow: rgb(79, 148, 238) -0px 1px,
+  rgb(15, 82, 144) -0px 2px,rgb(15, 82, 144) -0px 3px,
+  rgb(15, 82, 144) -0px 4px,rgb(15, 82, 144) -0px 5px,
+  rgb(15, 82, 144) -0px 6px,rgb(15, 82, 144) -0px 7px,
+  rgb(15, 82, 144) -0px 8px,rgb(15, 82, 144) -0px 9px,
+  rgb(15, 82, 144) -0px 10px,rgb(15, 82, 144) -0px 11px ;
+  transform : translate3d(8px, -8px, 0)
+}
 
-  .liste-choix:hover input[type="radio"] + span:hover {
-  background:#133f92;
-  }
-
-  .liste-choix:hover input[type="radio"]:checked + span:hover {
-  background:#133f92;
-  }
-
-  .liste-choix input[type="radio"]:checked + span {
-  background: #3b99e6;
-  position: absolute;
-  top: 0em;
-  border-radius: 0.2em;
-  }
-
-
-  .liste-choix:hover input[type="radio"]:checked + span {
-  border-radius: 0;
-  }
-  .liste-choix:hover .liste-choix-generation label:nth-last-of-type(1) input[type="radio"]:checked + span{
-    border-radius:0 0 0.2em 0.2em;
-  }
-  
-  .liste-choix:hover .liste-choix-generation {
-  max-height: 540px;
-  }
-
-  .liste-choix-jeu{
-    top: 50%;
-    width: 24%;
-    left: 38%;
+.main-play-btn:before{
     position: absolute;
-    cursor: pointer;  
+    content: '';
+    left: 34px;
+    top: -8px;
+    z-index: 3;
+    background-image: url(images/bg_btn.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.main-play-btn:hover{
+    background: linear-gradient(97deg, rgba(255, 209, 64, 1) 0%,rgba(255, 177, 1, 1) 100% );
+    box-shadow: #e3a700 -0px 1px,#e3a700 -0px 2px,
+    #e3a700 -0px 3px,#e3a700 -0px 4px,
+    #e3a700 -0px 5px,#e3a700 -0px 6px,
+    #e3a700 -0px 7px,#e3a700 -0px 8px,
+    #e3a700 -0px 9px,#e3a700 -0px 10px,
+    #e3a700 -0px 11px;
+}
+
+.main-play-btn{
+  margin: 0 auto;
+  width: 18%;
+  height: 6%;
+  font-size: 2rem;
+  z-index: 99;
+  margin-bottom: 19px;
+}
+
+.main-links{
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
+  z-index: 999;
+}
+
+.main-links a,
+.main-links span{
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 0px 10px;
+  text-align: center;
+  text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+           1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.main-links a{
+  text-decoration: underline;
+  letter-spacing: 1px;
+  
+}
+
+@media(max-width:1300px){
+  .main-links {
+    max-width: 45%;
+    left: 15%;
   }
-  .liste-choix input[type="radio"]{
-    position:absolute;
-    left:-9999px;
+  .main-play-btn {
+    width: 30%;
   }
+}
+
+@media(max-width:1100px){
+  .logo{
+      max-width: 35%;
+      left: 35%;
+  }
+  .main-links {
+    left: 15%;
+  }
+  .main-play-btn {
+    width: 40%;
+  }
+}
+
+@media(max-width:960px){
+  .logo{
+      max-width: 35%;
+  }
+  .main-links {
+    left: 30%;
+  }
+  .main-play-btn {
+    width: 40%;
+  }
+}
+
+@media(max-width:800px){
+  .logo{
+      left: 32%;
+      max-width: 50%;
+  }
+  .main-links {
+    left: 5%;
+  }
+  .main-play-btn {
+    width: 50%;
+  }
+}
+
+@media(max-width:500px){
+  .logo{
+    left: 28%;
+    max-width: 60%;
+  }
+  .main-links{
+    left: 5%;
+  }
+  .main-play-btn {
+    width: 50%;
+  }
+}
+

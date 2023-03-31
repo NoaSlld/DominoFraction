@@ -18,7 +18,7 @@ class MultiplicationGenerator extends Generator {
             dominos = [];
         } 
         let sixNumBis = Math.floor(Math.random() * 10 ) + 1;
-        let sixDenumBis = Math.floor(Math.random() * 10 ) + 1
+        let sixDenumBis = Math.floor(Math.random() * 10 ) + 1;
         if ((sixDenumBis ==  sixNumBis || sixDenumBis == 1 )){
             this.generatefirst7dominos(dominos);
             dominos = [];
@@ -34,6 +34,7 @@ class MultiplicationGenerator extends Generator {
         dominos.push(new Domino(Calculator.reduce(prodNum,prodDenum)[0] + "/" + Calculator.reduce(prodNum,prodDenum)[1],
         sixNum + "/" + sixDenum + " * " + sixNumBis + "/" + sixDenumBis
         ));
+        
     }
     
     createDomino(dominos, nb){
@@ -48,11 +49,12 @@ class MultiplicationGenerator extends Generator {
     createAndPushOneDomino(dominos, i, aux){
         let g = Math.floor(Math.random() * 5 ) + 1;
         let h = Math.floor(Math.random() * 5 ) + 1;
+        console.log(dominos);
+        let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
+        let [numerator1, denominator1] = fraction1.split('/');
+        let [numerator2, denominator2] = fraction2.split('/');
         
         if (i <= 6) {
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push( new Domino(this.createDomino(dominos, 5),
             Calculator.reduce(numerator1*h,denominator1)[0] + "/" + Calculator.reduce(numerator1*h,denominator1)[1] + " * " + Calculator.reduce(numerator2,denominator2*h)[0] + "/" + Calculator.reduce(numerator2,denominator2*h)[1]
             )); 
@@ -61,9 +63,6 @@ class MultiplicationGenerator extends Generator {
             if(i == 7) {
                 aux = 0;
             }
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push(new Domino(this.createDomino(dominos, 4),
             Calculator.reduce(numerator1*g,denominator1*h)[0] + "/" + Calculator.reduce(numerator1*g,denominator1*h)[1] + " * " + Calculator.reduce(numerator2*h,denominator2*g)[0] + "/" + Calculator.reduce(numerator2*h,denominator2*g)[1]
             )); 
@@ -73,9 +72,6 @@ class MultiplicationGenerator extends Generator {
             if(i == 12) {
                 aux = 0;
             }
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push(new Domino(this.createDomino(dominos, 3),
             Calculator.reduce(numerator1*g,denominator1)[0] + "/" + Calculator.reduce(numerator1*g,denominator1)[1] + " * " + Calculator.reduce(numerator2,denominator2*g)[0] + "/" + Calculator.reduce(numerator2,denominator2*g)[1]
             )); 
@@ -85,9 +81,6 @@ class MultiplicationGenerator extends Generator {
             if(i == 16) {
                 aux = 0;
             }
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push(new Domino(this.createDomino(dominos, 2),
             Calculator.reduce(numerator1*h,denominator1*g)[0] + "/" + Calculator.reduce(numerator1*h,denominator1*g)[1] + " * " + Calculator.reduce(numerator2*g,denominator2*h)[0] + "/" + Calculator.reduce(numerator2*g,denominator2*h)[1]
             )); 
@@ -96,9 +89,6 @@ class MultiplicationGenerator extends Generator {
             if(i == 19) {
                 aux = 0;
             }
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push(new Domino(this.createDomino(dominos, 1),
             Calculator.reduce(numerator1*h,denominator1*g)[0] + "/" + Calculator.reduce(numerator1*h,denominator1*g)[1] + " * " + Calculator.reduce(numerator2*g,denominator2*h)[0] + "/" + Calculator.reduce(numerator2*g,denominator2*h)[1]
             )); 
@@ -107,9 +97,6 @@ class MultiplicationGenerator extends Generator {
             if(i == 21) {
                 aux = 0;
             }
-            let [fraction1, fraction2] = dominos[aux].valDroite.split('*');
-            let [numerator1, denominator1] = fraction1.split('/');
-            let [numerator2, denominator2] = fraction2.split('/');
             dominos.push(new Domino(this.createDomino(dominos, 0),
             Calculator.reduce(numerator1*h,denominator1*g)[0] + "/" + Calculator.reduce(numerator1*h,denominator1*g)[1] + " * " + Calculator.reduce(numerator2*g,denominator2*h)[0] + "/" + Calculator.reduce(numerator2*g,denominator2*h)[1]
             )); 

@@ -8,10 +8,10 @@ class Game {
     
     nbrPieceAGauche = 0
     nbrPieceADroite = 0
-    distanceAGauche = 41
+    distanceAGauche = 43
     distanceADroite = 51
-    hauteurAGauche = 38
-    hauteurADroite = 62
+    hauteurAGauche = 40
+    hauteurADroite = 60
     
     firstTime;
     currentPlayer;
@@ -35,7 +35,7 @@ class Game {
             return;
         });
         
-        this.dominos = this.generator.generate(this.dominos)
+        this.dominos = this.generator.generate(this.dominos);
         this.distribuerPieces();
     }
     
@@ -254,23 +254,23 @@ class Game {
                     if (rotation == 0) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(90deg)";
                         partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
-                        this.distanceAGauche -= 6;
+                        this.distanceAGauche -= 5;
                     } if (rotation == 1) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(270deg)";
                         partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
-                        this.distanceAGauche -= 6;
+                        this.distanceAGauche -= 5;
                     } if (rotation == 2) {
                         this.distanceAGauche += 1;
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(0deg)";
                         partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
-                        this.distanceAGauche -= 6;
+                        this.distanceAGauche -= 5;
                     }
                 } else {
-                    if (rotation == 2 && this.hauteurAGauche != 38) {
+                    if (rotation == 2 && this.hauteurAGauche != 40) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(90deg)";
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%";
-                        partieGauche[this.nbrPieceAGauche].style.left = "3.5%";
-                        this.hauteurAGauche -= 6;
+                        partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
+                        this.hauteurAGauche -= 12;
                     } else {
                         if (rotation == 2) {
                             rotation = 0;
@@ -279,13 +279,13 @@ class Game {
                     if (rotation == 0) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(180deg)";
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%"
-                        partieGauche[this.nbrPieceAGauche].style.left = "3.5%";
-                        this.hauteurAGauche -= 6;
+                        partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
+                        this.hauteurAGauche -= 12;
                     } if (rotation == 1) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(0deg)";
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%";
-                        partieGauche[this.nbrPieceAGauche].style.left = "3.5%";
-                        this.hauteurAGauche -= 6;
+                        partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
+                        this.hauteurAGauche -= 12;
                     }
                 }
                 this.nbrPieceAGauche += 1;
@@ -295,23 +295,23 @@ class Game {
                     if (rotation == 0) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(270deg)";
                         partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
-                        this.distanceADroite += 6;
+                        this.distanceADroite += 5;
                     } if (rotation == 1) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(90deg)";
                         partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
-                        this.distanceADroite += 6;
+                        this.distanceADroite += 5;
                     } if (rotation == 2) {
                         this.distanceADroite -= 1;
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(0deg)";
                         partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
-                        this.distanceADroite += 6;
+                        this.distanceADroite += 5;
                     }
                 } else {
-                    if (rotation == 2 && this.hauteurADroite != 62) {
+                    if (rotation == 2 && this.hauteurADroite != 60) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(90deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
-                        partieDroite[this.nbrPieceADroite].style.left = "93%";
-                        this.hauteurADroite -= 6;
+                        partieDroite[this.nbrPieceADroite].style.left = "92%";
+                        this.hauteurADroite -= 12;
                     } else {
                         if (rotation == 2) {
                             rotation = 0;
@@ -320,13 +320,13 @@ class Game {
                     if (rotation == 0) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(0deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%"
-                        partieDroite[this.nbrPieceADroite].style.left = "93%";
-                        this.hauteurADroite += 6;
+                        partieDroite[this.nbrPieceADroite].style.left = "92%";
+                        this.hauteurADroite += 12;
                     } if (rotation == 1) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(180deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
-                        partieDroite[this.nbrPieceADroite].style.left = "93%";
-                        this.hauteurADroite += 6;
+                        partieDroite[this.nbrPieceADroite].style.left = "92%";
+                        this.hauteurADroite += 12;
                     }
                 }
                 this.nbrPieceADroite += 1;
@@ -361,6 +361,8 @@ class Game {
         div1.classList.add(`${partie}`);
         div1.style.backgroundColor = couleur;
         div1.style.color = couleurTexte;
+        div1.style.width = "3.5%";
+        div1.style.height = "12%";
         const topDiv = document.createElement("div");
         topDiv.classList.add("top");
         topDiv.innerText = `${valGauche}`;
@@ -379,6 +381,8 @@ class Game {
         const div1 = document.createElement("div");
         div1.classList.add("piece");
         div1.classList.add("emc");
+        div1.style.width = "3.5%";
+        div1.style.height = "12%";
         div1.style.backgroundColor = couleur;
         div1.style.color = couleurTexte;
         const topDiv = document.createElement("div");

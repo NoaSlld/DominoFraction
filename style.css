@@ -55,10 +55,10 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     top: 50%;
 }
 .emc{
-    left: 46%;
+    left: 47%;
 }
 .emg{
-    left: 41%; 
+    left: 43%; 
     transform: rotate(270deg); 
 }
 .emd{
@@ -83,10 +83,13 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
 }
 .joueur{
     bottom: 1%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     background-color: transparent;
+    z-index: 99;
 }
 
 .infoBis{
@@ -113,13 +116,15 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
     height: 100%;
+    width: 100vh;
     right: 1%;
 }
 
 .bot0 .piece{
-    width: 100px;
-    height: 70px;
+    width: 10%;
+    height: 5%;
     background-color: black;
     display: flex;
     justify-content: space-between;
@@ -138,12 +143,13 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     display: flex;
     justify-content: center;
     top: 1%;
-    z-index: 0;
+    z-index: -10;
+    height: 99%;
     width: 100%;
 }
 .bot1 .piece{
-    width: 70px ;
-    height: 100px;
+    width: 3%;
+    height: 10%;
     transform: rotate(180deg); 
     background-color: black;
     margin: 0px 15px 0px 15px;
@@ -153,13 +159,14 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    width: 100vh;
     left: 1%;
        
 }
 .bot2 .piece{
 
-    width: 100px;
-    height: 70px;
+    width: 10%;
+    height: 5%;
     background-color: black;
     display: flex;
     justify-content: space-between;
@@ -167,7 +174,7 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
 }
 .passer{
     cursor: pointer;
-    width:15%;
+    width: 10%;
     position: absolute;
     bottom: 1%;
     background-color: rgb(24, 23, 23);
@@ -175,6 +182,7 @@ body{margin: 0%;padding: 0%; background-color:rgb(184, 184, 184);}
     color:whitesmoke;
     display:none;
     font-size: 2vmax;
+    z-index: 999;
 }
 footer{
     position: absolute;
@@ -201,8 +209,8 @@ footer a{
 
 .piece {
 	box-sizing: border-box;
-	width: 70px;
-	height: 100px;
+	width: 3%;
+	height: 10%;
 	border: 1px solid black;
 	background-color: white;
 	font-size: 10px;

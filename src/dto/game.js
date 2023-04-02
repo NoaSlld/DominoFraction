@@ -250,7 +250,7 @@ class Game {
                 rotation = 2;
             }
             if (aGauche == true) {
-                if (this.distanceAGauche >= 3) {
+                if (this.distanceAGauche >= 3 && this.hauteurAGauche != 18) {                    
                     if (rotation == 0) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(90deg)";
                         partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
@@ -266,12 +266,29 @@ class Game {
                         this.distanceAGauche -= 5;
                     }
                 } else {
-                    if (rotation == 2 && this.hauteurAGauche != 40) {
+                    if(this.hauteurAGauche == 18){
+                        partieGauche[this.nbrPieceAGauche].style.transform = "rotate(90deg)";
+                        this.distanceAGauche += 5;
+                        partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
+                        partieGauche[this.nbrPieceAGauche].style.top = "18%";
+                        rotation = 3;
+                    }
+                    if(this.hauteurAGauche == 16){
+                        this.hauteurAGauche += 2;
+                        partieGauche[this.nbrPieceAGauche].style.transform = "rotate(270deg)";
+                        partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%";
+                        this.distanceAGauche = 2.5;
+                        partieGauche[this.nbrPieceAGauche].style.left = String(this.distanceAGauche) + "%";
+                        rotation = 3;
+                    }
+                    else {
+                        if (rotation == 2 && this.hauteurAGauche != 40 && this.hauteurAGauche != 18) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(90deg)";
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%";
                         partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
                         this.hauteurAGauche -= 12;
-                    } else {
+                        } 
+                    else {
                         if (rotation == 2) {
                             rotation = 0;
                         }
@@ -281,17 +298,22 @@ class Game {
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%"
                         partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
                         this.hauteurAGauche -= 12;
-                    } if (rotation == 1) {
+                    } 
+                    if (rotation == 1) {
                         partieGauche[this.nbrPieceAGauche].style.transform = "rotate(0deg)";
                         partieGauche[this.nbrPieceAGauche].style.top = String(this.hauteurAGauche) + "%";
                         partieGauche[this.nbrPieceAGauche].style.left = "1.5%";
                         this.hauteurAGauche -= 12;
+                        }
                     }
+                    
+                    
                 }
+                
                 this.nbrPieceAGauche += 1;
                 this.creerDominoTableau(1,valGauche,valDroite)
             } else {
-                if (this.distanceADroite <= 93) {
+                if (this.distanceADroite <= 93 && this.hauteurADroite != 82) {
                     if (rotation == 0) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(270deg)";
                         partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
@@ -307,12 +329,30 @@ class Game {
                         this.distanceADroite += 5;
                     }
                 } else {
-                    if (rotation == 2 && this.hauteurADroite != 60) {
+                    if(this.hauteurADroite == 82){
+                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(90deg)";
+                        this.distanceADroite -= 5;
+                        partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
+                        partieDroite[this.nbrPieceADroite].style.top = "82%";
+                        rotation = 3;
+                    }
+                    if(this.hauteurADroite == 84){
+                        this.hauteurADroite -= 2;
+                        partieDroite[this.nbrPieceADroite].style.transform = "rotate(90deg)";
+                        partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
+                        this.distanceADroite = 91;
+                        partieDroite[this.nbrPieceADroite].style.left = String(this.distanceADroite) + "%";
+                        rotation = 3;
+                    }
+                    
+                    else {
+                        if (rotation == 2 && this.hauteurADroite != 60 && this.hauteurADroite != 82) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(90deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
                         partieDroite[this.nbrPieceADroite].style.left = "92%";
-                        this.hauteurADroite -= 12;
-                    } else {
+                        this.hauteurADroite += 12;
+                    } 
+                    else {
                         if (rotation == 2) {
                             rotation = 0;
                         }
@@ -322,13 +362,18 @@ class Game {
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%"
                         partieDroite[this.nbrPieceADroite].style.left = "92%";
                         this.hauteurADroite += 12;
-                    } if (rotation == 1) {
+                        } 
+                    if (rotation == 1) {
                         partieDroite[this.nbrPieceADroite].style.transform = "rotate(180deg)";
                         partieDroite[this.nbrPieceADroite].style.top = String(this.hauteurADroite) + "%";
                         partieDroite[this.nbrPieceADroite].style.left = "92%";
                         this.hauteurADroite += 12;
+                        }
                     }
+                    
+                    
                 }
+                
                 this.nbrPieceADroite += 1;
                 this.creerDominoTableau(2,valGauche,valDroite)
             }
